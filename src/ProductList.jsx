@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
 import { addItem } from './CartSlice.jsx';
 import {useDispatch, useSelector} from 'react-redux';
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
-    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const [showPlants, setShowPlants] = useState(false);
     const cart = useSelector(state => state.cart.items);
     const dispatch = useDispatch();
 
@@ -244,12 +244,12 @@ function ProductList({ onHomeClick }) {
 
     const handleCartClick = (e) => {
         e.preventDefault();
-        setShowCart(true); // Set showCart to true when cart icon is clicked
+        setShowCart(true);
     };
     const handlePlantsClick = (e) => {
         e.preventDefault();
-        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
-        setShowCart(false); // Hide the cart when navigating to About Us
+        setShowPlants(true);
+        setShowCart(false);
     };
 
     const handleContinueShopping = (e) => {
@@ -288,7 +288,7 @@ function ProductList({ onHomeClick }) {
                 <div className="product-grid">
                     {plantsArray.map((entry, index) => (
                             <div key={index}>
-                                <h1 style={{textAlign: "center"}}>{entry.category}</h1>
+                                <h1 className="plant_heading">{entry.category}</h1>
                                 <div className="product-list">
                                     {entry.plants.map((plant, index) => (
                                         <div className="product-card" key={index}>
